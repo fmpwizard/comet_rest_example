@@ -1,7 +1,7 @@
 package code
 package snippet
 
-import code.model.{Series,Versions}
+import code.model.{Versions}
 import code.snippet.Param._
 import scala.xml.{NodeSeq, Text, Elem}
 import net.liftweb.util._

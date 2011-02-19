@@ -28,8 +28,16 @@ class Boot {
   val logger = Logger(classOf[Boot])
   def boot {
     
-    if (!DB.jndiJdbcConnAvailable_?) DB.defineConnectionManager(DefaultConnectionIdentifier, DBVendor)
+    if (!DB.jndiJdbcConnAvailable_?) {
+      val vendor =
+        new StandardDBVendor(Props.get("db.driver") openOr "org.h2.Driver",
+                             Props.get("db.url") openOr
+                             "jdbc:h2:lift_proto.db;AUTO_SERVER=TRUE",
+                             Props.get("db.user"), Props.get("db.password"))
+      LiftRules.unloadHooks.append(vendor.closeAllConnections_! _)
 
+      DB.defineConnectionManager(DefaultConnectionIdentifier, vendor)
+    }
     // Use Lift's Mapper ORM to populate the database
     // you don't need to use Mapper to use Lift... use
     // any ORM you want
@@ -69,27 +77,4 @@ class Boot {
   }
 }
 
-
-object DBVendor extends ConnectionManager with Logger {
-  def newConnection(name: ConnectionIdentifier): Box[Connection] = {
-    try {
-      Class.forName("com.mysql.jdbc.Driver")
-      val jdbcurl= (Props.get("db.url") openOr "") +
-        "?user=" + (Props.get("db.user") openOr "") +
-        "&password=" + (Props.get("db.password") openOr "") +
-        "&" + Props.get("additionalurlparam").openOr("")
-      debug( jdbcurl)
-
-      // Connection pool
-
-
-
-      val dm = DriverManager.getConnection(jdbcurl)
-      Full(dm)
-    } catch {
-      case e : Exception => e.printStackTrace; Empty
-    }
-  }
-  def releaseConnection(conn: Connection) {conn.close}
-}
 

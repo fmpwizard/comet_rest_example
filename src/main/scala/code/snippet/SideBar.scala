@@ -1,7 +1,7 @@
 package code {
 package snippet {
 
-import code.model.{Series,Versions}
+import code.model.{Versions}
 
 import _root_.scala.xml.{NodeSeq, Text}
 
@@ -47,29 +47,6 @@ class SideBar extends Logger {
   }
 
 
-  /**
-    * Generate the Series sidebar section
-    */
-
-  def series( xhtml: NodeSeq ) = {
-    val seriesList: List[Series]= 
-      Series.findAllFields(Seq[SelectableField] (Series. series_name), OrderBy(Series. series_name, Descending) )
-
-    //  List(code.model.Versions={id=-1,version_name=2.3.0.1290})
-    val series_name_col: List[String] = seriesList.map(_.series_name.is)
-    //debug(series_name_col)
-
-    def bindSeries(template: NodeSeq): NodeSeq = {
-      //series_name_col.flatMap{ case (ser) => bind("series", template,"number" -> ("ss" + "ssa"))}
-      series_name_col.flatMap{ case (ser) => bind("series", template,"number" ->
-                                                      (ajaxButton(ser, 
-                                                        () => {SetValueAndFocus("versionBox",{ser})}))
-                                                  )}
-    }
-    bind("Series",xhtml, "list" -> bindSeries _)
-  }
-
-  
 
 }
 

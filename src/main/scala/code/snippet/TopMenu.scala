@@ -1,7 +1,6 @@
 package code
 package snippet
 
-import code.model.{AutomatedTests}
 import code.snippet.Param._
 
 import scala.xml.{NodeSeq, Text, Elem}
