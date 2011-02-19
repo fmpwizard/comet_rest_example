@@ -1,0 +1,9 @@
+{
+  "apiversion":"1",
+  "service_manager_version":"2.4.0.1090",
+  "test_name":"Control Render",
+  "test_result":0,
+  "platform_name":"Windows XP",
+  "browser_name":"IE8",
+  "test_notes":"QA-101"
+}

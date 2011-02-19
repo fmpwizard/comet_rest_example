@@ -1,0 +1,7 @@
+# Properties in this file will be read when running in dev mode
+#db.driver=com.mysql.jdbc.Driver
+#db.url=jdbc:mysql://127.0.0.1:5132/qadashboard
+#db.url=jdbc:mysql://127.0.0.1:14040/qadashboard
+#db.user=msandbox
+#db.password=msandbox
+#additionalurlparam=statementInterceptors=com.mysql.etools.jdbc.StatementPerformanceCounters&mysqlenterprise.serviceManagerUrl=http://127.0.0.1:18080&mysqlenterprise.serviceManagerUser=agent&mysqlenterprise.serviceManagerPassword=mysql&logger=Slf4JLogger

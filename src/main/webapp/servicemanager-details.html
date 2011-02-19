@@ -1,0 +1,32 @@
+<lift:surround with="default" at="content">
+  <div class="colborder ">
+    <hr class="space" />
+    <lift:ServiceManagerDetails.renderServiceManagerResult>
+      <h2>Service Manager results for version: </h2>
+      <table>
+        <tr>
+          <th>Platform</th>
+          <th>Installer available</th>
+          <th>Starts</th>
+          <th>Smoke Test</th>
+          <th>Other tests</th>
+          <th>CPU Usage</th>
+          <th>RAM Usage</th>
+          <th>QUAN help link</th>
+        </tr>
+        <tr id="row">
+          <td id="col">Windows XP</td>
+          <td class="clearable"> Installer available </td>
+          <td class="clearable"> Starts </td>
+          <td class="clearable"> Smoke Test </td>
+          <td class="clearable"> Other Tests </td>
+          <td class="clearable"> CPU Usage </td>
+          <td class="clearable"> RAM Usage </td>
+          <td class="clearable"> QUAN help link </td>
+        </tr>
+  
+      </table>
+    </lift:ServiceManagerDetails.renderServiceManagerResult>
+  </div>
+</lift:surround>
+

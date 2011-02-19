@@ -1,0 +1,50 @@
+<lift:surround with="default" at="content">
+<!--
+  <div id="invoice_lines" class="lift:InvoiceWiring.showLines">input goes here</div>
+  <div><div class="lift:InvoiceWiring.addLine?div=invoice_lines">Add</div></div>
+  <div>Version: <span class="lift:InvoiceWiring.version">version</span></div>
+
+<input id="versionBox" type="text" value=""   />
+-->
+
+      <div class="colborder ">
+        <hr class="space" />
+
+
+<lift:Overview.renderAgentResult>
+    <h2>Results for version: <tests:version /></h2> 
+    <table>
+      <tr>
+        <th>Agent Tests</th>
+        <th>Result</th>
+      </tr>
+      <tests:testResultListRow>
+        <tr>
+          <td test:classname="success"> <test:name /> </td>
+          <td test:classname="success"> <test:result /> </td>
+        </tr>
+      </tests:testResultListRow>
+    </table>
+</lift:Overview.renderAgentResult>
+
+
+<lift:Overview.renderServiceManagerResult>
+    <table>
+      <tr>
+        <th>Service Manager Tests</th>
+        <th>Result</th>
+      </tr>
+      <tests:testResultListRow>
+        <tr>
+          <td test:classname="success"> <test:name /> </td>
+          <td test:classname="success"> <test:result /> </td>
+        </tr>
+      </tests:testResultListRow>
+    </table>
+</lift:Overview.renderServiceManagerResult>
+
+
+      </div>
+
+</lift:surround>
+
