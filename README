@@ -1,0 +1,39 @@
+This is a sample Lift application that shows one way to use Comet Actors to update 
+the UI only when there is new information coming through a REST interface.
+
+It uses named actors, actor dispatchers and the REST support that comes with Lift
+
+To use it do:
+
+git clone git://github.com/fmpwizard/comet_rest_example.git
+cd comet_rest_example
+sbt
+update
+jetty-run
+
+Go with the browser to:
+
+http://127.0.0.1:8080/browser-details/2.4.0.1090
+
+On another terminal screen do:
+
+cd comet_rest_example
+
+while true;
+  do curl   http://127.0.0.1:8080/v1/rest/browsertests/id2  -H"Content-Type: application/json"  -T json1.txt ;
+  sleep 1;
+  curl   http://127.0.0.1:8080/v1/rest/browsertests/id2  -H"Content-Type: application/json"  -T json2.txt ;
+  sleep 1;
+  curl   http://127.0.0.1:8080/v1/rest/browsertests/id2  -H"Content-Type: application/json"  -T json3.txt ;
+  sleep 1 ;
+  curl   http://127.0.0.1:8080/v1/rest/browsertests/id2  -H"Content-Type: application/json"  -T json4.txt ;
+done;
+
+
+And go to the browser and notice how just two cells change values.
+
+Enjoy and feel free to send feedback on:
+* The lift mailing list <liftweb@googlegroups.com>
+* diego@fmpwizard.com (I use gmail so don't bother sending spam :) )
+* on my blog at http://fmpwizard-scala.posterous.com/
+
